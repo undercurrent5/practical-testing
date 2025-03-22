@@ -1,5 +1,6 @@
 package sample.unit;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.unit.beverage.Americano;
 import sample.unit.beverage.Latte;
@@ -22,6 +23,7 @@ class CafeKioskTest {
 
     }
 
+    @DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.")
     @Test
     void add() {
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -41,6 +43,7 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages().get(1)).isEqualTo(americano);
     }
 
+    @DisplayName("음료는 1개 미만으로 주문할 수 없다.")
     @Test
     void addZeroBeverages() {
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -117,13 +120,13 @@ class CafeKioskTest {
         assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 
+    @DisplayName("영업 시작 시간 이전에는 주문을 생성할 수 없다.")
     @Test
     void createOrderOutsideOpenTime() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
 
         cafeKiosk.add(americano);
-
 
         assertThatThrownBy(() -> cafeKiosk.createOrder(LocalDateTime.of(2025, 3, 22, 9, 59)))
                 .isInstanceOf(IllegalArgumentException.class)
