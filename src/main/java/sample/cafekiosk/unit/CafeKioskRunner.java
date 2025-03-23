@@ -1,7 +1,7 @@
-package sample.unit;
+package sample.cafekiosk.unit;
 
-import sample.unit.beverage.Americano;
-import sample.unit.beverage.Latte;
+import sample.cafekiosk.unit.beverage.Latte;
+import sample.cafekiosk.unit.beverage.Americano;
 
 public class CafeKioskRunner {
 
